@@ -84,6 +84,9 @@ class EndpointsV1:
     replace_password_path = "/v1/auth/password/replace"
     password_policy_path = "/v1/auth/password/policy"
 
+    # OIDC
+    oidc_authorize_finish = "/oauth2/v1/finish-authorize"
+
 
 class EndpointsV2:
     public_key_path = "/v2/keys"

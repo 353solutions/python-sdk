@@ -6,6 +6,7 @@ from descope.auth import Auth  # noqa: F401
 from descope.authmethod.enchantedlink import EnchantedLink  # noqa: F401
 from descope.authmethod.magiclink import MagicLink  # noqa: F401
 from descope.authmethod.oauth import OAuth  # noqa: F401
+from descope.authmethod.oidc import OIDC  # noqa: F401
 from descope.authmethod.otp import OTP  # noqa: F401
 from descope.authmethod.password import Password  # noqa: F401
 from descope.authmethod.saml import SAML  # noqa: F401
@@ -37,6 +38,7 @@ class DescopeClient:
         self._totp = TOTP(auth)
         self._webauthn = WebAuthn(auth)
         self._password = Password(auth)
+        self._oidc = OIDC(auth)
 
     @property
     def mgmt(self):
@@ -77,6 +79,10 @@ class DescopeClient:
     @property
     def password(self):
         return self._password
+
+    @property
+    def oidc(self):
+        return self._oidc
 
     def validate_permissions(self, jwt_response: dict, permissions: List[str]) -> bool:
         """
